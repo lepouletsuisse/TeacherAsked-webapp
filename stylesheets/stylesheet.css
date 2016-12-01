@@ -43,6 +43,12 @@ a {
   padding-left: 10px;
 }
 
+.currentQuestion-text{
+  font-size: 40px;
+  color: darkslateblue !important;
+  margin-top: 100px !important;
+}
+
 .answerStudent{
   text-align: center;
 }
@@ -52,6 +58,10 @@ button{
 
 .answerStudent-input{
   text-align: center;
+}
+
+.hideAnswer-label{
+  color: darkred;
 }
 
 .answer-table{
