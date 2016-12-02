@@ -46,7 +46,16 @@ a {
 .currentQuestion-text{
   font-size: 40px;
   color: darkslateblue !important;
-  margin-top: 100px !important;
+}
+
+.goodAnswer{
+  font-size: 40px;
+  color: green;
+}
+
+.badAnswer{
+  font-size: 40px;
+  color:red !important;
 }
 
 .answerStudent{
