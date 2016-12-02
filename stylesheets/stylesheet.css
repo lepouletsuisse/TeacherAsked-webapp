@@ -15,6 +15,18 @@ a {
   a:hover {
     text-decoration: underline; }
 
+.are-you{
+  font-size: 40px;
+  color: lightseagreen;
+  text-align: center;
+}
+
+.mockup{
+  font-weight: bold;
+  text-align: center;
+  color: grey;
+}
+
 .btn {
   display: inline-block;
   margin-bottom: 1rem;
