@@ -19,6 +19,16 @@ a {
 .login-button{
 }
 
+.no-check-answer{
+  color:black !important;
+}
+
+.room-id{
+  color:blueviolet;
+  font-size: 24px;
+  text-decoration: underline;
+}
+
 .columns{
   display: flex;
   flex-direction: row;
