@@ -4,6 +4,7 @@
 For any documentation and explication how to use my application, i invite you to visit my [Landing Page](https://lepouletsuisse.github.io/TeacherAsked-webapp/) (Including Mockups).
 *Note that the server is not modified (IOB server) and absolutly doesn't do what it is supposed to.*
 ## Technology used
+- Github Pages
 - AngularJS
 - Yeoman generator (Angm)
 - SocketIO
