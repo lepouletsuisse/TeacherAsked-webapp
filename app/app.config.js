@@ -9,15 +9,16 @@
 	 * Configutation of the app
 	 */
 
-
 	angular
 		.module('teacherasked-webapp')
 		.config(configure)
 		.run(runBlock);
 
-	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider'];
+	configure.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', '$qProvider'];
 
-	function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+	function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $qProvider) {
+
+		$qProvider.errorOnUnhandledRejections(false);
 
 		$locationProvider.hashPrefix('!');
 

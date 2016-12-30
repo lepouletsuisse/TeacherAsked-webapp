@@ -18,7 +18,8 @@
     "chalk": "~0.5",
     "glob": "~4.0.5",
     "grunt": "^0.4.5",
-    "grunt-cli": "~0.1.13"
+    "grunt-cli": "~0.1.13",
+    "ngstorage": "^0.3.11"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

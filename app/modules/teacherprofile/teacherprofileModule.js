@@ -9,6 +9,6 @@
 	 * Module of the app
 	 */
 
-  	angular.module('teacherprofile', []);
+  	angular.module('teacherprofile', ['ngStorage', 'toaster']);
 
 })();

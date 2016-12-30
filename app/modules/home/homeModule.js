@@ -9,6 +9,6 @@
 	 * Module of the app
 	 */
 
-  	angular.module('home', ['toaster']);
+  	angular.module('home', ['toaster', 'ngStorage']);
 
 })();

@@ -117,6 +117,8 @@ module.exports = function (grunt) {
 						'bower.json',
 						'app/app.js',
 						'app/app.config.js',
+						'app/config/*.js',
+						'app/DTO/**/*.js',
 						'app/**/*Module.js',
 						'app/**/*Route.js',
 						'app/**/*Ctrl.js',

@@ -13,7 +13,7 @@
 		.module('home')
 		.controller('HomeCtrl', Home);
 
-		Home.$inject = ['$state', 'toaster', 'HomeService'];
+		Home.$inject = ['$scope', '$state', 'toaster', 'HomeService', '$localStorage'];
 
 		/*
 		* recommend
@@ -21,7 +21,7 @@
 		* and bindable members up top.
 		*/
 
-		function Home($state, toaster, HomeService) {
+		function Home($scope, $state, toaster, HomeService, $localStorage) {
 			/*jshint validthis: true */
 			var vm = this;
 
@@ -33,24 +33,29 @@
 			vm.roomId = "";
 
 			vm.submitLogin = function(){
-				if(vm.usernameTeacher == "" || vm.password == ""){
-					toaster.pop('error',"Student login", "You didn't fill all the fields! Please process than submit again.");
-					return;
-				}
-				if(HomeService.login(vm.usernameTeacher, vm.password) == true){
-					toaster.pop('info', "Login", "Successful login! Welcome " + vm.usernameTeacher);
-					$state.go('teacherprofile');
-				}
+				HomeService.login(vm.usernameTeacher, vm.password)
+				.then(function(res){
+					if(res.status == 200){
+						toaster.pop('info', "Login", "Successful login! Welcome " + res.data.username);
+						$localStorage.token = res.data.token;
+						$state.go('teacherprofile');
+					}else if(res.status == 401){
+						toaster.pop('error', "Login", res.data);
+					}else{
+						toaster.pop('error', "Login", "An error occured while connecting to the server!");
+					}
+				});
 			}
 
 			vm.submitRegister = function(){
-				if(vm.usernameTeacher == "" || vm.password == "" || vm.firstname == "" || vm.lastname == ""){
-					toaster.pop('error',"Teacher register", "You didn't fill all the fields! Please process than submit again.");
-					return;
-				}
-				if(HomeService.register(vm.usernameTeacher, vm.password, vm.firstname, vm.lastname) == true){
-					toaster.pop('info', "Register", "Successful register! Welcome " + vm.usernameTeacher);
-				}
+				HomeService.register(vm.usernameTeacher, vm.password, vm.firstname, vm.lastname)
+				.then(function(res){
+					if(res.status == 201){
+						toaster.pop('info', "Register", "Successful register! You can log in now!");
+					}else{
+						toaster.pop('error', "Register", res.data);
+					}
+				});
 			}
 
 			vm.submitStudent = function(){

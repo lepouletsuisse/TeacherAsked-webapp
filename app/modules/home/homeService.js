@@ -7,21 +7,19 @@
 
   	angular
 		.module('home')
-		.factory('HomeService', Home);
+		.factory('HomeService', HomeService);
 		// Inject your dependencies as .$inject = ['$http', 'someSevide'];
 		// function Name ($http, someSevide) {...}
 
-		Home.$inject = ['$http'];
+		HomeService.$inject = ['$http'];
 
-		function Home ($http) {
+		function HomeService ($http) {
 
-			var apiBaseURL = "http://localhost:3000";
+			var apiBaseURL = config.ApiBaseURL;
 
 			return {
 				//Login
 				login: function(username, password){
-					//$http.defaults.headers.get = {"Access-Control-Allow-Origin":"*"};
-					//$http.defaults.headers.get = {"Access-Control-Allow-Headers":"Origin, X-Requested-With, Content-Type, Accept"};
 					return $http({
 						url: apiBaseURL + "/auth", 
 						method: "GET", 
@@ -30,29 +28,33 @@
 							"password": password
 						},
 					})
-					.success(function(res){
-						console.log(res);
-						return true;
+					.then(function(res){
+						return res;
 					})
-					.error(function(data){
-						return data;				
+					.catch(function(res){
+						return res;		
 					});
 				},
-				//register
+				//Register
 				register: function(username, password, firstname, lastname){
-					/*return $http({url: "/api/register", method: "POST", params: 
-						{"username": username, 
-						"password": password, 
-						"firstname": firstname, 
-						"lastname": lastname}})
-					.success(function(res){
-						return res[0];
+					return $http({
+						url: apiBaseURL + "/register", 
+						method: "POST", 
+						data: {
+							"username": username, 
+							"password": password,
+							"firstname": firstname,
+							"lastname": lastname
+						},
 					})
-					.error(function(data){
-						return data;				
-					});*/
-					return true;
+					.then(function(res){
+						return res;
+					})
+					.catch(function(res){
+						return res;		
+					});
 				},
+				//Enter room
 				enterRoom: function(username, roomId){
 					return true;
 				}
